@@ -1,13 +1,30 @@
 #!/bin/bash
 
-# Script for Mongo DB size to CDATA
+# Send Mongo Stats Data to Develera Custom Monitoring
 
+#
+# Develera Custom Monitoring key
+#
 key="NTM1NTdmYzg0NGMzYjE3MzNiNGU5NGYz"
+
+
+#
+# Set Mongo DB name
+#
 dbMongo="fullstack-dev"
 
+
+#
+# Get mongo data
+#
 dbRaw=$(echo -e "use $dbMongo\ndb.stats()" | mongo)
 
-query='&dbName=DEVELERA'
+
+#
+# Build query
+#
+query='?key='$key
+query=$query'&dbName=DEVELERA'
 query=$query'&size='$(echo -e "$dbRaw" | awk '/fileSize/ {print $3}' | sed 's/,//')
 query=$query'&objects='$(echo -e "$dbRaw" | awk '/objects/ {print $3}' | sed 's/,//')
 query=$query'&collections='$(echo -e "$dbRaw" | awk '/collections/ {print $3}' | sed 's/,//')
@@ -17,4 +34,8 @@ query=$query'&storageSize='$(echo -e "$dbRaw" | awk '/storageSize/ {print $3}' |
 query=$query'&indexSize='$(echo -e "$dbRaw" | awk '/indexSize/ {print $3}' | sed 's/,//')
 query=$query'&indexes='$(echo -e "$dbRaw" | awk '/indexes/ {print $3}' | sed 's/,//')
 
-curl 'http://cdata.develera.com/v1/data?key='$key$query
+
+#
+# Send data
+#
+curl 'http://cdata.develera.com/v1/data'$query
