@@ -1,0 +1,205 @@
+"definition" : [ 
+        {
+            "type" : "chart",
+            "name" : "File Size",
+            "unstack" : true,
+            "interpolation" : "linear",
+            "render" : "area",
+            "limit" : 168,
+            "height" : 140,
+            "colsize" : 4,
+            "x" : {
+                "name" : "time",
+                "value" : "@_time"
+            },
+            "y" : [ 
+                {
+                    "name" : "size",
+                    "unit" : "Byte",
+                    "value" : "@size",
+                    "color" : "#cde6f6",
+                    "stroke" : "#3498DB"
+                }
+            ]
+        }, 
+        {
+            "type" : "chart",
+            "name" : "dataSize,storageSize",
+            "unstack" : true,
+            "interpolation" : "linear",
+            "render" : "line",
+            "limit" : 168,
+            "height" : 140,
+            "colsize" : 4,
+            "x" : {
+                "name" : "time",
+                "value" : "@_time"
+            },
+            "y" : [ 
+                {
+                    "name" : "dataSize",
+                    "unit" : "Byte",
+                    "value" : "@dataSize",
+                    "color" : "#3498DB"
+                }, 
+                {
+                    "name" : "storageSize",
+                    "unit" : "Byte",
+                    "value" : "@storageSize",
+                    "color" : "#f2882c"
+                }
+            ]
+        }, 
+        {
+            "type" : "chart",
+            "name" : "Objects",
+            "unstack" : true,
+            "interpolation" : "linear",
+            "render" : "area",
+            "limit" : 168,
+            "height" : 140,
+            "colsize" : 4,
+            "x" : {
+                "name" : "time",
+                "value" : "@_time"
+            },
+            "y" : [ 
+                {
+                    "name" : "objects",
+                    "value" : "@objects",
+                    "color" : "#cde6f6",
+                    "stroke" : "#3498DB"
+                }
+            ]
+        }, 
+        {
+            "type" : "table-simple",
+            "name" : "Actual",
+            "colsize" : 12,
+            "columns" : [ 
+                {
+                    "name" : "time",
+                    "type" : {
+                        "name" : "datetime",
+                        "format" : "medium"
+                    },
+                    "value" : "@_time"
+                }, 
+                {
+                    "name" : "size",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@size"
+                }, 
+                {
+                    "name" : "storageSize",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@storageSize"
+                }, 
+                {
+                    "name" : "dataSize",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@dataSize"
+                }, 
+                {
+                    "name" : "indexSize",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@indexSize"
+                }, 
+                {
+                    "name" : "avgObjSize",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@avgObjSize"
+                }, 
+                {
+                    "name" : "objects",
+                    "type" : {
+                        "name" : "number"
+                    },
+                    "value" : "@objects"
+                }, 
+                {
+                    "name" : "indexes",
+                    "type" : {
+                        "name" : "number"
+                    },
+                    "value" : "@indexes"
+                }
+            ],
+            "limit" : 1
+        }, 
+        {
+            "type" : "table-simple",
+            "name" : "Diff",
+            "colsize" : 12,
+            "columns" : [ 
+                {
+                    "name" : "time",
+                    "type" : {
+                        "name" : "datetime",
+                        "format" : "medium"
+                    },
+                    "value" : "@_time"
+                }, 
+                {
+                    "name" : "size diff",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@size-@size{-1}"
+                }, 
+                {
+                    "name" : "storageSize diff",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@storageSize-@storageSize{-1}"
+                }, 
+                {
+                    "name" : "dataSize diff",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@dataSize-@dataSize{-1}"
+                }, 
+                {
+                    "name" : "indexSize diff",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@indexSize-@indexSize{-1}"
+                }, 
+                {
+                    "name" : "avgObjSize",
+                    "type" : {
+                        "name" : "byte"
+                    },
+                    "value" : "@avgObjSize"
+                }, 
+                {
+                    "name" : "Objects",
+                    "type" : {
+                        "name" : "number"
+                    },
+                    "value" : "@objects-@objects{-1}"
+                }, 
+                {
+                    "name" : "Indexes",
+                    "type" : {
+                        "name" : "number"
+                    },
+                    "value" : "@indexes-@indexes{-1}"
+                }
+            ],
+            "limit" : 48
+        }
+    ]
