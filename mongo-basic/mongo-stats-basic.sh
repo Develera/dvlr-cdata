@@ -11,7 +11,7 @@ key="NTM1NTdmYzg0NGMzYjE3MzNiNGU5NGYz"
 #
 # Set Mongo DB name
 #
-dbMongo="fullstack-dev"
+dbMongo="your-mongo-db-name"
 
 
 #
@@ -24,7 +24,6 @@ dbRaw=$(echo -e "use $dbMongo\ndb.stats()" | mongo)
 # Build query
 #
 query='?key='$key
-query=$query'&dbName=DEVELERA'
 query=$query'&size='$(echo -e "$dbRaw" | awk '/fileSize/ {print $3}' | sed 's/,//')
 query=$query'&objects='$(echo -e "$dbRaw" | awk '/objects/ {print $3}' | sed 's/,//')
 query=$query'&collections='$(echo -e "$dbRaw" | awk '/collections/ {print $3}' | sed 's/,//')
