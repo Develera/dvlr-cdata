@@ -5,7 +5,7 @@
 #
 # Develera Custom Monitoring key
 #
-key="NTM1NTdmYzg0NGMzYjE3MzNiNGU5NGYz"
+key="your-custom-monitoring-key"
 
 
 #
