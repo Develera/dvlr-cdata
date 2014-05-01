@@ -38,3 +38,6 @@ query=$query'&indexes='$(echo -e "$dbRaw" | awk '/indexes/ {print $3}' | sed 's/
 # Send data
 #
 curl 'http://cdata.develera.com/v1/data'$query
+
+# clear query
+query=''
