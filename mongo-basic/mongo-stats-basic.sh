@@ -39,5 +39,5 @@ query=$query'&indexes='$(echo -e "$dbRaw" | awk '/indexes/ {print $3}' | sed 's/
 #
 curl 'http://cdata.develera.com/v1/data'$query
 
-# clear query
+# Clear query
 query=''
